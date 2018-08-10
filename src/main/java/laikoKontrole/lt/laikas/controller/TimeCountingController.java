@@ -21,10 +21,12 @@ public class TimeCountingController {
 
     @PostMapping("/startTimer")
     public String index(Model model, @ModelAttribute TimerData loginTime) {
+            // singletone isiminti kada buvo pradetas laikas
+        // singletone isiminti kiek laikob leista
+        Singleton.getInstance().startCounting(Integer.parseInt(loginTime.getOptradio()));
 
-        model.addAttribute("loginTime", new LoginData());
-        //countTimer();
-        //return "timeCounting";
+
+
         return "redirect:/home";
     }
 
