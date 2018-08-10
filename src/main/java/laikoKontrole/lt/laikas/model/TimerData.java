@@ -9,10 +9,6 @@ public class TimerData {
     private String timer;
     private String optradio;
 
-    public void timerRun(){
-        Singleton.getInstance().isStarted();
-    }
-
 
     public String getTimer() {
         return timer;

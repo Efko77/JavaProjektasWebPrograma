@@ -1,12 +1,11 @@
 package laikoKontrole.lt.laikas.model.singleton;
 
-import java.util.Date;
-
 public class Singleton {
     private static Singleton firstInstance = null;
     private boolean started = false;
-    private int kiekSkyreLaiko = 0;
+    private long kiekSkyreLaiko = 0;
     private long startTime = 0;
+
 
     private Singleton() {
         readData();
@@ -39,24 +38,49 @@ public class Singleton {
         this.started = started;
     }
 
+
+
+
     public void startCounting(int i) {
         started = true;
         kiekSkyreLaiko = i;
 
         // isiminti kada pradeta naudoti date
-
-        startTime =(long) (System.currentTimeMillis()/1000L);
+        //laiko skaiciavimas
+        startTime = (long) (System.currentTimeMillis() / 1000L);
 
 
     }
 
     public String kiekLikoLaiko() {
         // atsakymas = (pradinis laikas + laikas leistas)- dabartinis laikas
-        long curentTime =(long) (System.currentTimeMillis()/1000L);
-        return (startTime-curentTime+kiekSkyreLaiko)+"s";
+        long curentTime = (long) (System.currentTimeMillis() / 1000L);
+        if(paused){
+            startTime=curentTime;
+        }
+        long likoLaiko = startTime - curentTime + kiekSkyreLaiko;
+        if (likoLaiko <= 0 ) {
+            started = false;
+        }
+        return (startTime - curentTime + kiekSkyreLaiko) + "s";
     }
 
-    public int getKiekSkyreLaiko() {
+    public long getKiekSkyreLaiko() {
         return kiekSkyreLaiko;
+    }
+
+
+    private boolean paused;
+ public boolean getPaused(){
+     return paused;
+ }
+    public void pauseTimer() {
+        paused=true;
+        long curentTime = (long) (System.currentTimeMillis() / 1000L);
+        kiekSkyreLaiko = startTime - curentTime + kiekSkyreLaiko;
+
+    }
+    public void unpauseTimer(){
+        paused=false;
     }
 }

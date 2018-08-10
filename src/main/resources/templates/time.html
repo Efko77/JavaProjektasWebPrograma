@@ -3,7 +3,7 @@
         <h1>Laiko nustatymas</h1>
 
         <form class="form-signin" action="#" th:action="@{/startTimer}" th:object="${loginTime}" method="post">
-            <label class="radio-inline"><input type="radio" name="optradio" value="1800">0.5 h</label>
+            <label class="radio-inline"><input type="radio" name="optradio" value="10">0.5 h</label>
             <label class="radio-inline"><input type="radio" name="optradio" value="3600">1 h</label>
             <label class="radio-inline"><input type="radio" name="optradio" value="5400">1.5 h</label>
             <label class="radio-inline"><input type="radio" name="optradio" value="7200">2.0 h</label>
@@ -14,7 +14,16 @@
             <button class="btn btn-lg btn-primary btn-block" type="submit">start</button>
         </form>
     </div>
-    <div class="container border border-primary" th:if="${started == true}">
+    <div class="container border border-primary" th:if="${started == true && paused == false}">
         <h1 th:text="${likoLaiko}"></h1>
+        <form class="form-signin" action="#" th:action="@{/pauseTimer}" method="get">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Pause</button>
+        </form>
+    </div>
+    <div class="container border border-primary" th:if="${started == true && paused == true}">
+        <h1 th:text="${likoLaiko}"></h1>
+        <form class="form-signin" action="#" th:action="@{/resumeTimer}" method="get">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Resume</button>
+        </form>
     </div>
 </div>

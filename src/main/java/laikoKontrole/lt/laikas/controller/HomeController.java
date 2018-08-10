@@ -22,6 +22,7 @@ public class HomeController {
             response.addCookie(new Cookie("isLoggedIn", "true"));
             model.addAttribute("started",Singleton.getInstance().isStarted());
             model.addAttribute("skirtaLaiko",Singleton.getInstance().getKiekSkyreLaiko());
+
             uzpildykTimerioDuomenis(model);
 
             return "home";
@@ -35,6 +36,8 @@ public class HomeController {
 
             model.addAttribute("started",Singleton.getInstance().isStarted());
             model.addAttribute("likoLaiko",Singleton.getInstance().kiekLikoLaiko());
+            model.addAttribute("paused",Singleton.getInstance().getPaused());
+
             uzpildykTimerioDuomenis(model);
             return "home";
         }
