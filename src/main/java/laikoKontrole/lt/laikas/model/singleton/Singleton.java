@@ -1,5 +1,7 @@
 package laikoKontrole.lt.laikas.model.singleton;
 
+import laikoKontrole.lt.laikas.model.ProxyServer;
+
 public class Singleton {
     private static Singleton firstInstance = null;
     private boolean started = false;
@@ -8,6 +10,9 @@ public class Singleton {
 
 
     private Singleton() {
+
+        ProxyServer myProxy = new ProxyServer(8085);
+        myProxy.listen();
         readData();
     }
 

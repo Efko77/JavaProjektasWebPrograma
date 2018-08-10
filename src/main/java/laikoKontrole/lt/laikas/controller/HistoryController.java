@@ -1,56 +1,55 @@
 package laikoKontrole.lt.laikas.controller;
 
-import laikoKontrole.lt.laikas.model.ProxyList;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 @Controller
 public class HistoryController {
-    protected TextField textField;
-    protected TextArea textArea;
-    private final static String newline = "\n";
 
 
+    private ArrayList<String> narsyklesDuomenys;
 
 
-    // button.addActionListener(new ActionListener(){
-
-    public void actionPerfomed(ActiveEvent event) {
-        String text = textField.getText();
-        textArea.append(text + newline);
-        textField.selectAll();
-        //textArea.setCaretPosition(textArea.getDocument().getLenght());
-
+    public ArrayList<String> getList() {
+        return narsyklesDuomenys;
     }
 
+    private void readData(String proxy) {
 
-/*
+        narsyklesDuomenys = new ArrayList<>();
 
-        @RequestMapping(value = "/", method = RequestMethod.GET)
-        public ModelAndView getdata() {
+        FileReader reader = null;
 
-            ProxyList<proxyAdress> list = getList();
+        try {
+            reader = new FileReader(proxy);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Scanner sc = new Scanner(reader);
 
-            //return back to index.jsp
-            ModelAndView model = new ModelAndView("index");
-            model.addObject("lists", list);
-
-            return model;
+        while (sc.hasNext()) {
+            String adresai = sc.next();
+            narsyklesDuomenys.add(sc.next());
 
         }
 
-        private ProxyList<String> getList() {
+        sc.close();
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-            ProxyList<String> list = new Arr<String>();
-            list.add("List A");
 
-            return list;
 
-        }*/
 }
