@@ -1,0 +1,20 @@
+<div th:fragment="time" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="container border border-primary" th:if="${started != true}">
+        <h1>Laiko nustatymas</h1>
+
+        <form class="form-signin" action="#" th:action="@{/startTimer}" th:object="${loginTime}" method="post">
+            <label class="radio-inline"><input type="radio" name="optradio" value="1800">0.5 h</label>
+            <label class="radio-inline"><input type="radio" name="optradio" value="3600">1 h</label>
+            <label class="radio-inline"><input type="radio" name="optradio" value="5400">1.5 h</label>
+            <label class="radio-inline"><input type="radio" name="optradio" value="7200">2.0 h</label>
+            <label class="radio-inline"><input type="radio" name="optradio" value="9000">2.5 h</label>
+            <label class="radio-inline"><input type="radio" name="optradio" value="10800">3.0 h</label>
+            <label class="radio-inline"><input type="radio" name="optradio" value="12600">3.5 h</label>
+            <label class="radio-inline"><input type="radio" name="optradio" value="14400">4.0 h</label>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">start</button>
+        </form>
+    </div>
+    <div class="container border border-primary" th:if="${started == true}">
+        <h1>dirbu</h1>
+    </div>
+</div>
