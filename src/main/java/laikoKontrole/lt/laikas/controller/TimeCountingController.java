@@ -32,11 +32,23 @@ public class TimeCountingController {
         Singleton.getInstance().pauseTimer();
         return "redirect:/home";
     }
+
     @GetMapping("/resumeTimer")
     public String indexResume() {
         Singleton.getInstance().unpauseTimer();
         return "redirect:/home";
     }
+
+    /*@GetMapping("/historyList")
+    public String indexhistory() {
+        Singleton.getInstance().getList();
+        return "redirect:/home";
+    }*/
+
+
+
+
+
     private String timer;
 
     public String getTimer() {

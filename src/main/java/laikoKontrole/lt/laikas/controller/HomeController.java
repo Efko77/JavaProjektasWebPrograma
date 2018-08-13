@@ -20,9 +20,9 @@ public class HomeController {
         if (login.getPassword().equals("mano")) {
 
             response.addCookie(new Cookie("isLoggedIn", "true"));
-            model.addAttribute("started",Singleton.getInstance().isStarted());
-            model.addAttribute("skirtaLaiko",Singleton.getInstance().getKiekSkyreLaiko());
-
+            model.addAttribute("started", Singleton.getInstance().isStarted());
+            model.addAttribute("skirtaLaiko", Singleton.getInstance().getKiekSkyreLaiko());
+            //model.addAttribute("history", Singleton.getInstance().getList());
             uzpildykTimerioDuomenis(model);
 
             return "home";
@@ -31,12 +31,12 @@ public class HomeController {
     }
 
     @GetMapping("/home")
-    public String getNormalPage(@CookieValue(value="isLoggedIn", defaultValue="false") String isLoggedIn ,Model model){
-        if(isLoggedIn.equals("true")){
+    public String getNormalPage(@CookieValue(value = "isLoggedIn", defaultValue = "false") String isLoggedIn, Model model) {
+        if (isLoggedIn.equals("true")) {
 
-            model.addAttribute("started",Singleton.getInstance().isStarted());
-            model.addAttribute("likoLaiko",Singleton.getInstance().kiekLikoLaiko());
-            model.addAttribute("paused",Singleton.getInstance().getPaused());
+            model.addAttribute("started", Singleton.getInstance().isStarted());
+            model.addAttribute("likoLaiko", Singleton.getInstance().kiekLikoLaiko());
+            model.addAttribute("paused", Singleton.getInstance().getPaused());
 
             uzpildykTimerioDuomenis(model);
             return "home";
@@ -45,9 +45,9 @@ public class HomeController {
 
     }
 
-    public void uzpildykTimerioDuomenis(Model model){
-        if(!Singleton.getInstance().isStarted()){
-            model.addAttribute("loginTime",new TimerData());
+    public void uzpildykTimerioDuomenis(Model model) {
+        if (!Singleton.getInstance().isStarted()) {
+            model.addAttribute("loginTime", new TimerData());
         }
     }
 

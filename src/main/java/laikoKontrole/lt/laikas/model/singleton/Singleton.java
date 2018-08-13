@@ -1,20 +1,23 @@
 package laikoKontrole.lt.laikas.model.singleton;
 
-import laikoKontrole.lt.laikas.model.ProxyServer;
+//import laikoKontrole.lt.laikas.model.ProxyServer;
+
+import laikoKontrole.lt.laikas.controller.HistoryController;
 
 public class Singleton {
+    public static HistoryController getInstance;
     private static Singleton firstInstance = null;
     private boolean started = false;
     private long kiekSkyreLaiko = 0;
     private long startTime = 0;
 
 
-    private Singleton() {
+    /*private Singleton() {
 
         ProxyServer myProxy = new ProxyServer(8085);
         myProxy.listen();
         readData();
-    }
+    }*/
 
     private void readData() {
     }
@@ -44,8 +47,6 @@ public class Singleton {
     }
 
 
-
-
     public void startCounting(int i) {
         started = true;
         kiekSkyreLaiko = i;
@@ -60,11 +61,11 @@ public class Singleton {
     public String kiekLikoLaiko() {
         // atsakymas = (pradinis laikas + laikas leistas)- dabartinis laikas
         long curentTime = (long) (System.currentTimeMillis() / 1000L);
-        if(paused){
-            startTime=curentTime;
+        if (paused) {
+            startTime = curentTime;
         }
         long likoLaiko = startTime - curentTime + kiekSkyreLaiko;
-        if (likoLaiko <= 0 ) {
+        if (likoLaiko <= 0) {
             started = false;
         }
         return (startTime - curentTime + kiekSkyreLaiko) + "s";
@@ -76,16 +77,24 @@ public class Singleton {
 
 
     private boolean paused;
- public boolean getPaused(){
-     return paused;
- }
+
+    public boolean getPaused() {
+        return paused;
+    }
+
     public void pauseTimer() {
-        paused=true;
+        paused = true;
         long curentTime = (long) (System.currentTimeMillis() / 1000L);
         kiekSkyreLaiko = startTime - curentTime + kiekSkyreLaiko;
 
     }
-    public void unpauseTimer(){
-        paused=false;
+
+    public void unpauseTimer() {
+        paused = false;
+    }
+
+
+    public void getList() {
+        return;
     }
 }

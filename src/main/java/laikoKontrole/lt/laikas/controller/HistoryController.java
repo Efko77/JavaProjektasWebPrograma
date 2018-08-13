@@ -1,5 +1,6 @@
 package laikoKontrole.lt.laikas.controller;
 
+import laikoKontrole.lt.laikas.model.singleton.Singleton;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,7 +40,6 @@ public class HistoryController {
         while (sc.hasNext()) {
             String adresai = sc.next();
             narsyklesDuomenys.add(sc.next());
-
         }
 
         sc.close();
