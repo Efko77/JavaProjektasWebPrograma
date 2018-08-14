@@ -55,6 +55,11 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>laikoKontrole.lt</groupId>
+            <artifactId>laikas</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
 
     </dependencies>

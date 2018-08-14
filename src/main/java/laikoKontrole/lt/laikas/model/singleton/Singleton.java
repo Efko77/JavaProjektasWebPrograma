@@ -1,6 +1,5 @@
 package laikoKontrole.lt.laikas.model.singleton;
 
-//import laikoKontrole.lt.laikas.model.ProxyServer;
 
 import laikoKontrole.lt.laikas.controller.HistoryController;
 
@@ -93,7 +92,6 @@ public class Singleton {
     public void unpauseTimer() {
         paused = false;
     }
-
 
 
     public boolean getList() {
