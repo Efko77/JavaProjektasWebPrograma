@@ -2,9 +2,11 @@
     <br>
     <div class="container border border-primary">
         <h3>Lankytu svetainiu sarasas</h3>
-        <form class="form-signin" action="#" th:action="@{/timeCounting}">
+        <p th:each="item : ${tekstas}" th:text="${item}"></p>
+        <form class="form-signin" action="#" th:action="@{/home}">
             <button class="btn btn-lg btn-primary btn-block" type="submit">Web list</button>
         </form>
+
 
         <!--ul th:each="count: ${counts}" th:object="${/list}" method="get">
             <li th:text="${count}"></li>

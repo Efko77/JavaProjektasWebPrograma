@@ -39,7 +39,7 @@ public class HomeController {
             model.addAttribute("started", Singleton.getInstance().isStarted());
             model.addAttribute("likoLaiko", Singleton.getInstance().kiekLikoLaiko());
             model.addAttribute("paused", Singleton.getInstance().getPaused());
-
+            model.addAttribute("tekstas", Singleton.getInstance().getList());
             uzpildykTimerioDuomenis(model);
             return "home";
         }
@@ -47,12 +47,7 @@ public class HomeController {
 
     }
 
-    @RequestMapping("/timeCounting")
-    public String bandymasAdresu(Model duomenys) {
-        Singleton.getInstance().getList();
-        duomenys.addAttribute("tekstas", c);
-        return "timeCounting";
-    }
+
 
     public void uzpildykTimerioDuomenis(Model model) {
         if (!Singleton.getInstance().isStarted()) {

@@ -4,7 +4,8 @@
 
 </head>
 <body>
-<p th:text="${tekstas}">
+<p th:each="item : ${tekstas}" th:text="${item}">
+
 </p>
 </div>
 </body>

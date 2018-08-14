@@ -3,6 +3,12 @@ package laikoKontrole.lt.laikas.model.singleton;
 
 import laikoKontrole.lt.laikas.controller.HistoryController;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Singleton {
     public static HistoryController getInstance;
     private static Singleton firstInstance = null;
@@ -94,7 +100,57 @@ public class Singleton {
     }
 
 
-    public boolean getList() {
-        return false;
+
+
+    public ArrayList<String> getList() {
+        ArrayList<String> sarasas = new ArrayList<String>();
+        FileReader reader = null;
+        try {
+            reader = new FileReader("data1.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Scanner sc = new Scanner(reader);
+
+        while (sc.hasNext()) {
+
+            sarasas.add(sc.nextLine());
+        }
+
+
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sarasas;
+
+    }
+
+
+
+    public ArrayList<String> putDeletList() {
+        ArrayList<String> sarasas = new ArrayList<String>();
+        FileReader reader = null;
+        try {
+            reader = new FileReader("data1.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Scanner sc = new Scanner(reader);
+
+        while (sc.hasNext()) {
+
+            sarasas.add(sc.nextLine());
+        }
+
+
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sarasas;
+
     }
 }
