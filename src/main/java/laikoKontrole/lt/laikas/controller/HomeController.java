@@ -24,6 +24,7 @@ public class HomeController {
             model.addAttribute("started", Singleton.getInstance().isStarted());
             model.addAttribute("skirtaLaiko", Singleton.getInstance().getKiekSkyreLaiko());
             //model.addAttribute("list", Singleton.getInstance().getList());
+            uzpildykAdresulentele(model);
             uzpildykTimerioDuomenis(model);
 
             return "home";

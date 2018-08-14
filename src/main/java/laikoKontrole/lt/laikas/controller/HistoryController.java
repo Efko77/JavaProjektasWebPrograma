@@ -26,7 +26,7 @@ public class HistoryController {
 
         FileWriter writer = null;
         try {
-            writer = new FileWriter("data1.txt", true);
+            writer = new FileWriter("data1.txt" );
         } catch (IOException e) {
             e.printStackTrace();
         }
