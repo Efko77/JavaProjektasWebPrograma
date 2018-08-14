@@ -40,6 +40,7 @@ public class HomeController {
             model.addAttribute("likoLaiko", Singleton.getInstance().kiekLikoLaiko());
             model.addAttribute("paused", Singleton.getInstance().getPaused());
             model.addAttribute("tekstas", Singleton.getInstance().getList());
+            model.addAttribute("blokuoti", Singleton.getInstance().addDelete());
             uzpildykTimerioDuomenis(model);
             return "home";
         }

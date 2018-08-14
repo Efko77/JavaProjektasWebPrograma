@@ -1,16 +1,14 @@
 <div th:fragment="history" xmlns:th="http://www.w3.org/1999/xhtml">
     <br>
     <div class="container border border-primary">
-        <h3>Lankytu svetainiu sarasas</h3>
-        <p th:each="item : ${tekstas}" th:text="${item}"></p>
-        <form class="form-signin" action="#" th:action="@{/home}">
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Web list</button>
+        <h3>Lankytų svetainių sąrašas</h3>
+        <form action="#" th:action="@{/startTimer}" th:object="${blokuoti}" method="post">
+            <p th:each="item,iter : ${tekstas}">
+                <input type="checkbox" th:value="${item}" th:name="${'page' + iter.index}"/>
+                <label th:text="${item}"></label>
+            </p>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Blokuoti pažymėtus</button>
         </form>
-
-
-        <!--ul th:each="count: ${counts}" th:object="${/list}" method="get">
-            <li th:text="${count}"></li>
-        </ul-->
 
     </div>
 </div>
