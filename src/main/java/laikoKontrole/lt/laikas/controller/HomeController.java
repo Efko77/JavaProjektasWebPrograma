@@ -1,5 +1,6 @@
 package laikoKontrole.lt.laikas.controller;
 
+import laikoKontrole.lt.laikas.model.ItemsVO;
 import laikoKontrole.lt.laikas.model.LoginData;
 import laikoKontrole.lt.laikas.model.TimerData;
 import laikoKontrole.lt.laikas.model.singleton.Singleton;
@@ -22,7 +23,7 @@ public class HomeController {
             response.addCookie(new Cookie("isLoggedIn", "true"));
             model.addAttribute("started", Singleton.getInstance().isStarted());
             model.addAttribute("skirtaLaiko", Singleton.getInstance().getKiekSkyreLaiko());
-            //model.addAttribute("history", Singleton.getInstance().getList());
+            //model.addAttribute("list", Singleton.getInstance().getList());
             uzpildykTimerioDuomenis(model);
 
             return "home";
@@ -51,5 +52,9 @@ public class HomeController {
         }
     }
 
-
+    public void uzpildykAdresulentele(Model model) {
+        if (!Singleton.getInstance().getList()){
+            model.addAttribute("list", new HistoryController());
+        }
+    }
 }

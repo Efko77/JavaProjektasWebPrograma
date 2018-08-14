@@ -8,6 +8,7 @@ public class Singleton {
     public static HistoryController getInstance;
     private static Singleton firstInstance = null;
     private boolean started = false;
+
     private long kiekSkyreLaiko = 0;
     private long startTime = 0;
 
@@ -94,7 +95,8 @@ public class Singleton {
     }
 
 
-    public void getList() {
-        return;
+
+    public boolean getList() {
+        return false;
     }
 }
